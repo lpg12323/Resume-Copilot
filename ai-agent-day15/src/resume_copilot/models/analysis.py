@@ -62,9 +62,17 @@ class AnalysisReport(BaseModel):
 
     @field_validator("match_score", mode="before")
     @classmethod
-    def _coerce_score(cls, value: int | float | str) -> int:
-        """Ensure match_score is always returned as an integer."""
-        return int(value)
+    def _coerce_and_clamp_score(cls, value: int | float | str) -> int:
+        """Ensure match_score is an integer and clamp it to [0, 100].
+
+        Some LLMs occasionally return scores outside the valid range; clamping
+        keeps the report usable while preserving the intended scale.
+        """
+        try:
+            score = int(value)
+        except (TypeError, ValueError) as exc:
+            raise ValueError(f"match_score must be a number, got {value!r}") from exc
+        return max(0, min(100, score))
 
     def to_markdown(self) -> str:
         """Render the report as a Markdown string for display or export."""

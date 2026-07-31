@@ -5,15 +5,19 @@ with the fields it wishes to update. Exceptions are caught and surfaced
 through the ``error`` state field so the graph can degrade gracefully.
 """
 
+import json
+import re
 from datetime import datetime
 from pathlib import Path
+from typing import Any
 
 from langchain_core.messages import AIMessage, BaseMessage, HumanMessage
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ValidationError
 
 from resume_copilot.analyzers import AnalysisError, ResumeAnalyzer
+from resume_copilot.analyzers.resume_analyzer import _extract_json
 from resume_copilot.config import get_settings
 from resume_copilot.graph.state import AgentState
 from resume_copilot.logger import logger
@@ -41,7 +45,7 @@ ROUTER_SYSTEM_PROMPT = (
     "- 'rewrite': the user wants to modify, improve, or rewrite part of the resume.\n"
     "- 'export': the user wants to save or export the current resume as Markdown.\n"
     "- 'chat': the user is asking a question, greeting, or the intent is unclear.\n\n"
-    "Respond only with one of the three labels."
+    "Respond only with a valid JSON object containing the label."
 )
 
 REWRITER_SYSTEM_PROMPT = (
@@ -176,6 +180,7 @@ def router_node(state: AgentState) -> dict:
         return {"next_node": "rewrite"}
 
     try:
+        settings = get_settings()
         llm = _get_chat_llm(temperature=0.1)
         prompt = ChatPromptTemplate.from_messages(
             [
@@ -183,8 +188,30 @@ def router_node(state: AgentState) -> dict:
                 ("user", "User message: {message}\n\nClassify the intent."),
             ]
         )
-        chain = prompt | llm.with_structured_output(RouterDecision)
-        decision: RouterDecision = chain.invoke({"message": content})
+
+        if settings.structured_output_method == "json_schema":
+            chain = prompt | llm.with_structured_output(RouterDecision)
+            decision: RouterDecision = chain.invoke({"message": content})
+        else:
+            # json_mode fallback for providers like DeepSeek.
+            schema = json.dumps(RouterDecision.model_json_schema(), ensure_ascii=False, indent=2)
+            # Escape braces so LangChain treats the JSON schema as literal text.
+            escaped_schema = schema.replace("{", "{{").replace("}", "}}")
+            schema_prompt = (
+                f"{ROUTER_SYSTEM_PROMPT}\n\n"
+                "You must respond with a single valid JSON object matching this schema:\n"
+                f"```json\n{escaped_schema}\n```\n\n"
+                "Do not include any text outside the JSON object."
+            )
+            prompt = ChatPromptTemplate.from_messages(
+                [
+                    ("system", schema_prompt),
+                    ("user", "User message: {message}\n\nClassify the intent."),
+                ]
+            )
+            response = (prompt | llm).invoke({"message": content})
+            data = _extract_json(str(response.content))
+            decision = RouterDecision(**data)
     except Exception as exc:
         logger.error("[router_node] LLM routing failed: {}", exc)
         return {"next_node": "chat"}

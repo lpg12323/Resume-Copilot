@@ -1,8 +1,12 @@
 """LLM-based resume analyzer with structured output."""
 
+import json
+import re
 from typing import Any
 
+from json_repair import repair_json
 from langchain_core.language_models.chat_models import BaseChatModel
+from langchain_core.messages import BaseMessage
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 from pydantic import ValidationError
@@ -38,8 +42,71 @@ _USER_PROMPT = (
     "{target_jd}\n\n"
     "## Resume Content\n"
     "{resume_text}\n\n"
-    "Please generate the structured analysis report according to the required schema."
+    "Please generate the structured analysis report as valid JSON according to the required schema."
 )
+
+
+def _extract_json(text: str) -> dict[str, Any]:
+    """Extract a JSON object from model output, tolerating markdown code blocks.
+
+    Uses balanced-brace scanning so nested objects are not truncated. If the
+    extracted text is not valid JSON, ``json_repair`` is used as a fallback.
+    """
+    text = text.strip()
+
+    candidate = _find_json_candidate(text)
+
+    try:
+        return json.loads(candidate)
+    except json.JSONDecodeError:
+        pass
+
+    try:
+        repaired = repair_json(candidate)
+        return json.loads(repaired)
+    except Exception as exc:
+        raise ValueError(f"Failed to parse JSON from model output: {exc}") from exc
+
+
+def _find_json_candidate(text: str) -> str:
+    """Locate the first balanced JSON object in ``text``.
+
+    Prefers content inside a Markdown ``json`` code block, then falls back to
+    the first top-level balanced ``{...}`` object.
+    """
+    # Try to find JSON inside a markdown code block.
+    code_block_match = re.search(r"```(?:json)?\s*(\{.*\})\s*```", text, re.DOTALL)
+    if code_block_match:
+        return code_block_match.group(1)
+
+    # Fall back to balanced brace scanning.
+    start = text.find("{")
+    if start == -1:
+        raise ValueError(f"No JSON object found in model output: {text[:200]}...")
+
+    depth = 0
+    in_string = False
+    escape_next = False
+    for i, char in enumerate(text[start:], start=start):
+        if escape_next:
+            escape_next = False
+            continue
+        if char == "\\":
+            escape_next = True
+            continue
+        if char == '"':
+            in_string = not in_string
+            continue
+        if in_string:
+            continue
+        if char == "{":
+            depth += 1
+        elif char == "}":
+            depth -= 1
+            if depth == 0:
+                return text[start : i + 1]
+
+    raise ValueError(f"No balanced JSON object found in model output: {text[:200]}...")
 
 
 class ResumeAnalyzer:
@@ -76,13 +143,57 @@ class ResumeAnalyzer:
 
     def _build_chain(self, llm: BaseChatModel) -> Any:
         """Build the prompt + structured-output chain."""
+        settings = get_settings()
+        self._logger.debug(
+            "Using structured_output_method={} for model {}",
+            settings.structured_output_method,
+            settings.model_name,
+        )
+
+        if settings.structured_output_method == "json_schema":
+            prompt = ChatPromptTemplate.from_messages(
+                [
+                    ("system", _SYSTEM_PROMPT),
+                    ("user", _USER_PROMPT),
+                ]
+            )
+            return prompt | llm.with_structured_output(AnalysisReport)
+
+        # json_mode fallback: embed the schema in the prompt and parse manually.
+        # This is more robust for providers like DeepSeek that do not support
+        # json_schema response_format.
+        schema = json.dumps(AnalysisReport.model_json_schema(), ensure_ascii=False, indent=2)
+        # Escape braces so LangChain treats the JSON schema as literal text.
+        escaped_schema = schema.replace("{", "{{").replace("}", "}}")
+        schema_prompt = (
+            f"{_SYSTEM_PROMPT}\n\n"
+            "You must respond with a single valid JSON object matching this schema:\n"
+            f"```json\n{escaped_schema}\n```\n\n"
+            "Do not include any text outside the JSON object."
+        )
         prompt = ChatPromptTemplate.from_messages(
             [
-                ("system", _SYSTEM_PROMPT),
+                ("system", schema_prompt),
                 ("user", _USER_PROMPT),
             ]
         )
-        return prompt | llm.with_structured_output(AnalysisReport)
+        return prompt | llm | self._parse_llm_response
+
+    def _parse_llm_response(self, response: BaseMessage) -> AnalysisReport:
+        """Parse the raw LLM response into an ``AnalysisReport``."""
+        content = str(response.content)
+        self._logger.debug("Parsing LLM response: {} chars", len(content))
+        try:
+            data = _extract_json(content)
+        except ValueError as exc:
+            self._logger.error("JSON extraction failed: {}", exc)
+            raise AnalysisError(f"Failed to extract JSON from LLM output: {exc}") from exc
+
+        try:
+            return AnalysisReport(**data)
+        except ValidationError as exc:
+            self._logger.error("Structured output validation failed: {}", exc)
+            raise AnalysisError(f"LLM output did not match AnalysisReport schema: {exc}") from exc
 
     def analyze(self, resume_text: str, target_jd: str) -> AnalysisReport:
         """Run the structured analysis.
@@ -115,6 +226,8 @@ class ResumeAnalyzer:
                     "target_jd": target_jd,
                 }
             )
+        except AnalysisError:
+            raise
         except ValidationError as exc:
             self._logger.error("Structured output validation failed: {}", exc)
             raise AnalysisError(f"LLM output did not match AnalysisReport schema: {exc}") from exc

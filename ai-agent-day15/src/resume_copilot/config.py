@@ -8,7 +8,7 @@ throughout the project should be accessed via ``settings``.
 from functools import lru_cache
 from pathlib import Path
 
-from pydantic import Field, field_validator
+from pydantic import Field, field_validator, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -73,6 +73,13 @@ class Settings(BaseSettings):
         ge=1,
         description="Timeout in seconds for LLM API requests.",
     )
+    structured_output_method: str = Field(
+        default="auto",
+        description=(
+            "Method for structured output. 'json_schema' (OpenAI), "
+            "'json_mode' (DeepSeek), or 'auto' to detect from base_url."
+        ),
+    )
 
     # ------------------------------------------------------------------
     # Validators
@@ -93,8 +100,22 @@ class Settings(BaseSettings):
     def _resolve_path(cls, value: str | Path) -> Path:
         path = Path(value)
         if not path.is_absolute():
-            path = Path(__file__).resolve().parents[3] / path
+            # src/resume_copilot/config.py -> src -> project root
+            project_root = Path(__file__).resolve().parents[2]
+            path = project_root / path
         return path
+
+    @model_validator(mode="after")
+    def _auto_structured_output_method(self) -> "Settings":
+        """Auto-detect structured output method based on provider base URL."""
+        method = self.structured_output_method.strip().lower()
+        if method == "auto":
+            base_url = self.openai_base_url.lower()
+            if "deepseek" in base_url:
+                self.structured_output_method = "json_mode"
+            else:
+                self.structured_output_method = "json_schema"
+        return self
 
     def ensure_directories(self) -> None:
         """Create configured data and output directories if they do not exist."""

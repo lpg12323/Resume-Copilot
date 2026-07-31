@@ -6,6 +6,7 @@ import pytest
 from pydantic import ValidationError
 
 from resume_copilot.analyzers import AnalysisError, ResumeAnalyzer
+from resume_copilot.analyzers.resume_analyzer import _extract_json
 from resume_copilot.models import AnalysisReport, ProjectSuggestion
 
 
@@ -46,13 +47,10 @@ class TestAnalysisReportModel:
         assert report.match_score == 85
         assert len(report.missing_keywords) == 3
 
-    @pytest.mark.parametrize("invalid_score", [-1, 101, 150])
-    def test_analysis_report_score_out_of_range(self, invalid_score: int) -> None:
-        with pytest.raises(ValidationError):
-            AnalysisReport(
-                match_score=invalid_score,
-                summary="summary",
-            )
+    @pytest.mark.parametrize("raw_score,expected", [(-1, 0), (101, 100), (150, 100), (0, 0), (100, 100)])
+    def test_analysis_report_score_is_clamped(self, raw_score: int, expected: int) -> None:
+        report = AnalysisReport(match_score=raw_score, summary="summary")
+        assert report.match_score == expected
 
     def test_analysis_report_missing_summary_raises(self) -> None:
         with pytest.raises(ValidationError):
@@ -118,16 +116,14 @@ class TestResumeAnalyzer:
             analyzer.analyze("resume text", "")
 
     def test_analyze_wraps_validation_error(self) -> None:
-        expected = self._sample_report()
         fake_chain = MagicMock()
         fake_chain.invoke.side_effect = ValidationError.from_exception_data(
             title="AnalysisReport",
             line_errors=[
                 {
-                    "type": "greater_than_equal",
-                    "loc": ("match_score",),
-                    "input": -5,
-                    "ctx": {"ge": 0},
+                    "type": "missing",
+                    "loc": ("summary",),
+                    "input": {},
                 }
             ],
         )
@@ -137,3 +133,34 @@ class TestResumeAnalyzer:
 
         with pytest.raises(AnalysisError, match="LLM output did not match"):
             analyzer.analyze("resume text", "target jd text")
+
+
+class TestExtractJson:
+    """Tests for the robust JSON extraction helper."""
+
+    def test_extract_json_from_code_block(self) -> None:
+        text = 'Some text\n```json\n{"match_score": 82, "summary": "good"}\n```\nMore text'
+        result = _extract_json(text)
+        assert result == {"match_score": 82, "summary": "good"}
+
+    def test_extract_json_nested_object(self) -> None:
+        text = 'prefix {"outer": {"inner": 1}, "list": [1, 2]} suffix'
+        result = _extract_json(text)
+        assert result["outer"] == {"inner": 1}
+        assert result["list"] == [1, 2]
+
+    def test_extract_json_repairs_missing_comma(self) -> None:
+        text = '{"a": 1 "b": 2}'
+        result = _extract_json(text)
+        assert result["a"] == 1
+        assert result["b"] == 2
+
+    def test_extract_json_repairs_trailing_comma(self) -> None:
+        text = '{"a": 1, "b": 2,}'
+        result = _extract_json(text)
+        assert result["a"] == 1
+        assert result["b"] == 2
+
+    def test_extract_json_no_json_raises(self) -> None:
+        with pytest.raises(ValueError, match="No JSON object found"):
+            _extract_json("This text has no JSON object.")

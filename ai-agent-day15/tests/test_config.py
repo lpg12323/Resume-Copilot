@@ -11,7 +11,7 @@ from resume_copilot.logger import logger
 
 def test_settings_default_values() -> None:
     """Default settings should be populated with sensible defaults."""
-    settings = Settings()
+    settings = Settings(_env_file=None)
 
     assert settings.model_name == "gpt-4o-mini"
     assert settings.openai_base_url == "https://api.openai.com/v1"
@@ -19,22 +19,43 @@ def test_settings_default_values() -> None:
     assert settings.llm_temperature == pytest.approx(0.3)
     assert settings.llm_max_retries == 3
     assert settings.llm_timeout == 60
+    assert settings.structured_output_method == "json_schema"
 
 
 def test_settings_path_resolution() -> None:
     """Relative paths should be resolved against the project root."""
-    settings = Settings()
+    settings = Settings(_env_file=None)
 
     assert settings.data_dir.is_absolute()
     assert settings.outputs_dir.is_absolute()
     assert settings.data_dir.name == "data"
     assert settings.outputs_dir.name == "outputs"
+    # Verify paths are under the project root, not its parent.
+    assert "ai-agent-day15" in settings.data_dir.parts
+    assert "ai-agent-day15" in settings.outputs_dir.parts
 
 
 def test_settings_log_level_validation() -> None:
     """Invalid log levels should raise a validation error."""
     with pytest.raises(ValueError):
-        Settings(log_level="VERBOSE")
+        Settings(log_level="VERBOSE", _env_file=None)
+
+
+def test_settings_auto_structured_output_method() -> None:
+    """Auto-detection should choose json_mode for DeepSeek and json_schema otherwise."""
+    deepseek = Settings(
+        openai_base_url="https://api.deepseek.com/v1",
+        structured_output_method="auto",
+        _env_file=None,
+    )
+    assert deepseek.structured_output_method == "json_mode"
+
+    openai = Settings(
+        openai_base_url="https://api.openai.com/v1",
+        structured_output_method="auto",
+        _env_file=None,
+    )
+    assert openai.structured_output_method == "json_schema"
 
 
 def test_settings_ensure_directories(tmp_path: Path) -> None:

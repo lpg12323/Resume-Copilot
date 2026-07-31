@@ -196,3 +196,237 @@ match_score
 2026-08-01 00:33:32.049 | ERROR    | resume_copilot.parsers.pdf_parser:_validate_file_path:118 | Unsupported file extension '.txt', expected '.pdf'
 2026-08-01 00:33:32.052 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-11\test_parse_pdf_empty_content0\empty_resume.pdf
 2026-08-01 00:33:32.054 | ERROR    | resume_copilot.parsers.pdf_parser:parse_pdf:92 | PDF 'C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-11\test_parse_pdf_empty_content0\empty_resume.pdf' contains no extractable text
+2026-08-01 00:40:11.784 | INFO     | resume_copilot.analyzers.resume_analyzer:analyze:105 | Analyzing resume (11 chars) against JD (14 chars)
+2026-08-01 00:40:11.784 | INFO     | resume_copilot.analyzers.resume_analyzer:analyze:125 | Analysis completed: match_score=82
+2026-08-01 00:40:11.789 | INFO     | resume_copilot.analyzers.resume_analyzer:analyze:105 | Analyzing resume (11 chars) against JD (14 chars)
+2026-08-01 00:40:11.789 | ERROR    | resume_copilot.analyzers.resume_analyzer:analyze:119 | Structured output validation failed: 1 validation error for AnalysisReport
+match_score
+  Input should be greater than or equal to 0 [type=greater_than_equal, input_value=-5, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.13/v/greater_than_equal
+2026-08-01 00:40:11.806 | INFO     | tests.test_config:test_logger_can_log_capture:81 | test_config_logger_message
+2026-08-01 00:40:11.813 | INFO     | resume_copilot.graph.workflow:build_resume_graph:61 | Building Resume Copilot StateGraph
+2026-08-01 00:40:11.821 | INFO     | resume_copilot.graph.workflow:build_resume_graph:99 | StateGraph compiled successfully
+2026-08-01 00:40:11.832 | INFO     | resume_copilot.graph.workflow:build_resume_graph:61 | Building Resume Copilot StateGraph
+2026-08-01 00:40:11.835 | INFO     | resume_copilot.graph.workflow:build_resume_graph:99 | StateGraph compiled successfully
+2026-08-01 00:40:11.843 | INFO     | resume_copilot.graph.nodes:exporter_node:279 | [exporter_node] Exporting resume to C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-12\test_phase2_rewrite_and_phase30\outputs\resume_20260801_004011.md
+2026-08-01 00:40:11.844 | INFO     | resume_copilot.graph.nodes:exporter_node:286 | [exporter_node] Export successful
+2026-08-01 00:40:11.855 | INFO     | resume_copilot.graph.nodes:parser_node:85 | [parser_node] Parsing PDF: /tmp/resume.pdf
+2026-08-01 00:40:11.855 | INFO     | resume_copilot.graph.nodes:parser_node:95 | [parser_node] Extracted 18 characters
+2026-08-01 00:40:11.858 | INFO     | resume_copilot.graph.nodes:analyzer_node:114 | [analyzer_node] Analyzing resume against JD
+2026-08-01 00:40:11.858 | INFO     | resume_copilot.graph.nodes:analyzer_node:124 | [analyzer_node] Analysis complete: score=80
+2026-08-01 00:40:11.860 | INFO     | resume_copilot.graph.nodes:router_node:154 | [router_node] Routing user message: '帮我导出简历'
+2026-08-01 00:40:11.860 | INFO     | resume_copilot.graph.nodes:router_node:159 | [router_node] Keyword match: export
+2026-08-01 00:40:11.862 | INFO     | resume_copilot.graph.nodes:router_node:154 | [router_node] Routing user message: 'Please export my resume'
+2026-08-01 00:40:11.862 | INFO     | resume_copilot.graph.nodes:router_node:159 | [router_node] Keyword match: export
+2026-08-01 00:40:11.863 | INFO     | resume_copilot.graph.nodes:router_node:154 | [router_node] Routing user message: '保存为 Markdown'
+2026-08-01 00:40:11.863 | INFO     | resume_copilot.graph.nodes:router_node:159 | [router_node] Keyword match: export
+2026-08-01 00:40:11.864 | INFO     | resume_copilot.graph.nodes:router_node:154 | [router_node] Routing user message: '重写项目经历'
+2026-08-01 00:40:11.865 | INFO     | resume_copilot.graph.nodes:router_node:175 | [router_node] Keyword match: rewrite
+2026-08-01 00:40:11.866 | INFO     | resume_copilot.graph.nodes:router_node:154 | [router_node] Routing user message: 'Optimize my experience section'
+2026-08-01 00:40:11.866 | INFO     | resume_copilot.graph.nodes:router_node:175 | [router_node] Keyword match: rewrite
+2026-08-01 00:40:11.867 | INFO     | resume_copilot.graph.nodes:router_node:154 | [router_node] Routing user message: '把这段改得更业务化'
+2026-08-01 00:40:11.868 | INFO     | resume_copilot.graph.nodes:router_node:175 | [router_node] Keyword match: rewrite
+2026-08-01 00:40:11.869 | INFO     | resume_copilot.graph.nodes:router_node:154 | [router_node] Routing user message: 'What is LangGraph?'
+2026-08-01 00:40:11.871 | INFO     | resume_copilot.graph.nodes:router_node:192 | [router_node] LLM decision: chat
+2026-08-01 00:40:11.872 | WARNING  | resume_copilot.graph.nodes:router_node:139 | [router_node] No messages in state; defaulting to chat
+2026-08-01 00:40:11.874 | INFO     | resume_copilot.graph.nodes:rewriter_node:222 | [rewriter_node] Rewriting resume based on request: '加入 LangGraph 关键词'
+2026-08-01 00:40:11.875 | INFO     | resume_copilot.graph.nodes:rewriter_node:251 | [rewriter_node] Rewrite complete: 45 characters
+2026-08-01 00:40:11.879 | INFO     | resume_copilot.graph.nodes:exporter_node:279 | [exporter_node] Exporting resume to C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-12\test_exporter_node_writes_file0\resume_20260801_004011.md
+2026-08-01 00:40:11.879 | INFO     | resume_copilot.graph.nodes:exporter_node:286 | [exporter_node] Export successful
+2026-08-01 00:40:11.887 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-12\test_parse_pdf_success0\valid_resume.pdf
+2026-08-01 00:40:11.897 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:95 | Successfully parsed PDF 'C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-12\test_parse_pdf_success0\valid_resume.pdf': 48 characters extracted
+2026-08-01 00:40:11.899 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: \non\existent\resume.pdf
+2026-08-01 00:40:11.900 | ERROR    | resume_copilot.parsers.pdf_parser:_validate_file_path:110 | PDF file not found: \non\existent\resume.pdf
+2026-08-01 00:40:11.903 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-12\test_parse_pdf_unsupported_ext0\resume.txt
+2026-08-01 00:40:11.904 | ERROR    | resume_copilot.parsers.pdf_parser:_validate_file_path:118 | Unsupported file extension '.txt', expected '.pdf'
+2026-08-01 00:40:11.907 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-12\test_parse_pdf_empty_content0\empty_resume.pdf
+2026-08-01 00:40:11.909 | ERROR    | resume_copilot.parsers.pdf_parser:parse_pdf:92 | PDF 'C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-12\test_parse_pdf_empty_content0\empty_resume.pdf' contains no extractable text
+2026-08-01 01:11:25.501 | INFO     | resume_copilot.graph.workflow:build_resume_graph:61 | Building Resume Copilot StateGraph
+2026-08-01 01:11:25.511 | INFO     | resume_copilot.graph.workflow:build_resume_graph:99 | StateGraph compiled successfully
+2026-08-01 01:11:25.512 | INFO     | resume_copilot.cli:__init__:41 | CLI initialized with thread_id=cli-8169755e
+2026-08-01 01:13:22.136 | INFO     | resume_copilot.graph.workflow:build_resume_graph:61 | Building Resume Copilot StateGraph
+2026-08-01 01:13:22.146 | INFO     | resume_copilot.graph.workflow:build_resume_graph:99 | StateGraph compiled successfully
+2026-08-01 01:13:22.146 | INFO     | resume_copilot.cli:__init__:41 | CLI initialized with thread_id=cli-c9a2b0c3
+2026-08-01 01:15:44.307 | INFO     | resume_copilot.graph.nodes:parser_node:85 | [parser_node] Parsing PDF: C:\ai-agentlearning\Resume Copilot\ai-agent-day15\data\刘彭果简历.pdf
+2026-08-01 01:15:44.307 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: C:\ai-agentlearning\Resume Copilot\ai-agent-day15\data\刘彭果简历.pdf
+2026-08-01 01:15:44.451 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:95 | Successfully parsed PDF 'C:\ai-agentlearning\Resume Copilot\ai-agent-day15\data\刘彭果简历.pdf': 3785 characters extracted
+2026-08-01 01:15:44.452 | INFO     | resume_copilot.graph.nodes:parser_node:95 | [parser_node] Extracted 3785 characters
+2026-08-01 01:15:44.453 | INFO     | resume_copilot.graph.nodes:analyzer_node:114 | [analyzer_node] Analyzing resume against JD
+2026-08-01 01:15:45.087 | ERROR    | resume_copilot.graph.nodes:analyzer_node:121 | [analyzer_node] Unexpected error: Missing credentials. Please pass an `api_key`, `workload_identity`, `admin_api_key`, or set the `OPENAI_API_KEY` or `OPENAI_ADMIN_KEY` environment variable.
+2026-08-01 01:18:05.705 | INFO     | resume_copilot.graph.workflow:build_resume_graph:61 | Building Resume Copilot StateGraph
+2026-08-01 01:18:05.715 | INFO     | resume_copilot.graph.workflow:build_resume_graph:99 | StateGraph compiled successfully
+2026-08-01 01:18:05.715 | INFO     | resume_copilot.cli:__init__:41 | CLI initialized with thread_id=cli-473e5ddc
+2026-08-01 01:20:51.349 | INFO     | resume_copilot.graph.nodes:parser_node:85 | [parser_node] Parsing PDF: C:\ai-agentlearning\Resume Copilot\ai-agent-day15\data\刘彭果简历.pdf
+2026-08-01 01:20:51.349 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: C:\ai-agentlearning\Resume Copilot\ai-agent-day15\data\刘彭果简历.pdf
+2026-08-01 01:20:51.452 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:95 | Successfully parsed PDF 'C:\ai-agentlearning\Resume Copilot\ai-agent-day15\data\刘彭果简历.pdf': 3785 characters extracted
+2026-08-01 01:20:51.452 | INFO     | resume_copilot.graph.nodes:parser_node:95 | [parser_node] Extracted 3785 characters
+2026-08-01 01:20:51.453 | INFO     | resume_copilot.graph.nodes:analyzer_node:114 | [analyzer_node] Analyzing resume against JD
+2026-08-01 01:20:52.045 | ERROR    | resume_copilot.graph.nodes:analyzer_node:121 | [analyzer_node] Unexpected error: Missing credentials. Please pass an `api_key`, `workload_identity`, `admin_api_key`, or set the `OPENAI_API_KEY` or `OPENAI_ADMIN_KEY` environment variable.
+2026-08-01 01:28:14.036 | INFO     | resume_copilot.graph.workflow:build_resume_graph:61 | Building Resume Copilot StateGraph
+2026-08-01 01:28:14.046 | INFO     | resume_copilot.graph.workflow:build_resume_graph:99 | StateGraph compiled successfully
+2026-08-01 01:28:14.047 | INFO     | resume_copilot.cli:__init__:41 | CLI initialized with thread_id=cli-c58cf94b
+2026-08-01 01:28:52.359 | INFO     | resume_copilot.graph.nodes:parser_node:85 | [parser_node] Parsing PDF: C:\ai-agentlearning\Resume Copilot\ai-agent-day15\data\刘彭果简历.pdf
+2026-08-01 01:28:52.359 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: C:\ai-agentlearning\Resume Copilot\ai-agent-day15\data\刘彭果简历.pdf
+2026-08-01 01:28:52.467 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:95 | Successfully parsed PDF 'C:\ai-agentlearning\Resume Copilot\ai-agent-day15\data\刘彭果简历.pdf': 3785 characters extracted
+2026-08-01 01:28:52.468 | INFO     | resume_copilot.graph.nodes:parser_node:95 | [parser_node] Extracted 3785 characters
+2026-08-01 01:28:52.469 | INFO     | resume_copilot.graph.nodes:analyzer_node:114 | [analyzer_node] Analyzing resume against JD
+2026-08-01 01:28:54.401 | INFO     | resume_copilot.analyzers.resume_analyzer:analyze:105 | Analyzing resume (3785 chars) against JD (1552 chars)
+2026-08-01 01:28:54.658 | ERROR    | resume_copilot.analyzers.resume_analyzer:analyze:122 | Analysis failed: Error code: 400 - {'error': {'message': 'This response_format type is unavailable now', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-08-01 01:28:54.659 | ERROR    | resume_copilot.graph.nodes:analyzer_node:118 | [analyzer_node] Analysis failed: Failed to analyze resume: Error code: 400 - {'error': {'message': 'This response_format type is unavailable now', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-08-01 01:31:21.529 | INFO     | tests.test_config:test_logger_can_log_capture:81 | test_config_logger_message
+2026-08-01 01:31:54.493 | INFO     | resume_copilot.analyzers.resume_analyzer:analyze:115 | Analyzing resume (11 chars) against JD (14 chars)
+2026-08-01 01:31:54.494 | INFO     | resume_copilot.analyzers.resume_analyzer:analyze:135 | Analysis completed: match_score=82
+2026-08-01 01:31:54.499 | INFO     | resume_copilot.analyzers.resume_analyzer:analyze:115 | Analyzing resume (11 chars) against JD (14 chars)
+2026-08-01 01:31:54.499 | ERROR    | resume_copilot.analyzers.resume_analyzer:analyze:129 | Structured output validation failed: 1 validation error for AnalysisReport
+match_score
+  Input should be greater than or equal to 0 [type=greater_than_equal, input_value=-5, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.13/v/greater_than_equal
+2026-08-01 01:31:54.520 | INFO     | tests.test_config:test_logger_can_log_capture:99 | test_config_logger_message
+2026-08-01 01:31:54.526 | INFO     | resume_copilot.graph.workflow:build_resume_graph:61 | Building Resume Copilot StateGraph
+2026-08-01 01:31:54.534 | INFO     | resume_copilot.graph.workflow:build_resume_graph:99 | StateGraph compiled successfully
+2026-08-01 01:31:54.546 | INFO     | resume_copilot.graph.workflow:build_resume_graph:61 | Building Resume Copilot StateGraph
+2026-08-01 01:31:54.549 | INFO     | resume_copilot.graph.workflow:build_resume_graph:99 | StateGraph compiled successfully
+2026-08-01 01:31:54.558 | INFO     | resume_copilot.graph.nodes:exporter_node:284 | [exporter_node] Exporting resume to C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-14\test_phase2_rewrite_and_phase30\outputs\resume_20260801_013154.md
+2026-08-01 01:31:54.558 | INFO     | resume_copilot.graph.nodes:exporter_node:291 | [exporter_node] Export successful
+2026-08-01 01:31:54.562 | INFO     | resume_copilot.graph.nodes:parser_node:85 | [parser_node] Parsing PDF: /tmp/resume.pdf
+2026-08-01 01:31:54.562 | INFO     | resume_copilot.graph.nodes:parser_node:95 | [parser_node] Extracted 18 characters
+2026-08-01 01:31:54.565 | INFO     | resume_copilot.graph.nodes:analyzer_node:114 | [analyzer_node] Analyzing resume against JD
+2026-08-01 01:31:54.565 | INFO     | resume_copilot.graph.nodes:analyzer_node:124 | [analyzer_node] Analysis complete: score=80
+2026-08-01 01:31:54.568 | INFO     | resume_copilot.graph.nodes:router_node:154 | [router_node] Routing user message: '帮我导出简历'
+2026-08-01 01:31:54.568 | INFO     | resume_copilot.graph.nodes:router_node:159 | [router_node] Keyword match: export
+2026-08-01 01:31:54.569 | INFO     | resume_copilot.graph.nodes:router_node:154 | [router_node] Routing user message: 'Please export my resume'
+2026-08-01 01:31:54.570 | INFO     | resume_copilot.graph.nodes:router_node:159 | [router_node] Keyword match: export
+2026-08-01 01:31:54.571 | INFO     | resume_copilot.graph.nodes:router_node:154 | [router_node] Routing user message: '保存为 Markdown'
+2026-08-01 01:31:54.572 | INFO     | resume_copilot.graph.nodes:router_node:159 | [router_node] Keyword match: export
+2026-08-01 01:31:54.573 | INFO     | resume_copilot.graph.nodes:router_node:154 | [router_node] Routing user message: '重写项目经历'
+2026-08-01 01:31:54.573 | INFO     | resume_copilot.graph.nodes:router_node:175 | [router_node] Keyword match: rewrite
+2026-08-01 01:31:54.574 | INFO     | resume_copilot.graph.nodes:router_node:154 | [router_node] Routing user message: 'Optimize my experience section'
+2026-08-01 01:31:54.574 | INFO     | resume_copilot.graph.nodes:router_node:175 | [router_node] Keyword match: rewrite
+2026-08-01 01:31:54.576 | INFO     | resume_copilot.graph.nodes:router_node:154 | [router_node] Routing user message: '把这段改得更业务化'
+2026-08-01 01:31:54.576 | INFO     | resume_copilot.graph.nodes:router_node:175 | [router_node] Keyword match: rewrite
+2026-08-01 01:31:54.578 | INFO     | resume_copilot.graph.nodes:router_node:154 | [router_node] Routing user message: 'What is LangGraph?'
+2026-08-01 01:31:54.579 | INFO     | resume_copilot.graph.nodes:router_node:197 | [router_node] LLM decision: chat
+2026-08-01 01:31:54.580 | WARNING  | resume_copilot.graph.nodes:router_node:139 | [router_node] No messages in state; defaulting to chat
+2026-08-01 01:31:54.582 | INFO     | resume_copilot.graph.nodes:rewriter_node:227 | [rewriter_node] Rewriting resume based on request: '加入 LangGraph 关键词'
+2026-08-01 01:31:54.583 | INFO     | resume_copilot.graph.nodes:rewriter_node:256 | [rewriter_node] Rewrite complete: 45 characters
+2026-08-01 01:31:54.586 | INFO     | resume_copilot.graph.nodes:exporter_node:284 | [exporter_node] Exporting resume to C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-14\test_exporter_node_writes_file0\resume_20260801_013154.md
+2026-08-01 01:31:54.587 | INFO     | resume_copilot.graph.nodes:exporter_node:291 | [exporter_node] Export successful
+2026-08-01 01:31:54.593 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-14\test_parse_pdf_success0\valid_resume.pdf
+2026-08-01 01:31:54.607 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:95 | Successfully parsed PDF 'C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-14\test_parse_pdf_success0\valid_resume.pdf': 48 characters extracted
+2026-08-01 01:31:54.609 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: \non\existent\resume.pdf
+2026-08-01 01:31:54.610 | ERROR    | resume_copilot.parsers.pdf_parser:_validate_file_path:110 | PDF file not found: \non\existent\resume.pdf
+2026-08-01 01:31:54.613 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-14\test_parse_pdf_unsupported_ext0\resume.txt
+2026-08-01 01:31:54.613 | ERROR    | resume_copilot.parsers.pdf_parser:_validate_file_path:118 | Unsupported file extension '.txt', expected '.pdf'
+2026-08-01 01:31:54.616 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-14\test_parse_pdf_empty_content0\empty_resume.pdf
+2026-08-01 01:31:54.618 | ERROR    | resume_copilot.parsers.pdf_parser:parse_pdf:92 | PDF 'C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-14\test_parse_pdf_empty_content0\empty_resume.pdf' contains no extractable text
+2026-08-01 01:32:34.412 | INFO     | resume_copilot.graph.workflow:build_resume_graph:61 | Building Resume Copilot StateGraph
+2026-08-01 01:32:34.421 | INFO     | resume_copilot.graph.workflow:build_resume_graph:99 | StateGraph compiled successfully
+2026-08-01 01:32:34.422 | INFO     | resume_copilot.cli:__init__:41 | CLI initialized with thread_id=cli-18b9468b
+2026-08-01 01:32:42.419 | INFO     | resume_copilot.graph.nodes:parser_node:85 | [parser_node] Parsing PDF: C:\ai-agentlearning\Resume Copilot\ai-agent-day15\data\刘彭果简历.pdf
+2026-08-01 01:32:42.420 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: C:\ai-agentlearning\Resume Copilot\ai-agent-day15\data\刘彭果简历.pdf
+2026-08-01 01:32:42.528 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:95 | Successfully parsed PDF 'C:\ai-agentlearning\Resume Copilot\ai-agent-day15\data\刘彭果简历.pdf': 3785 characters extracted
+2026-08-01 01:32:42.529 | INFO     | resume_copilot.graph.nodes:parser_node:95 | [parser_node] Extracted 3785 characters
+2026-08-01 01:32:42.530 | INFO     | resume_copilot.graph.nodes:analyzer_node:114 | [analyzer_node] Analyzing resume against JD
+2026-08-01 01:32:44.214 | INFO     | resume_copilot.analyzers.resume_analyzer:analyze:115 | Analyzing resume (3785 chars) against JD (1552 chars)
+2026-08-01 01:32:44.423 | ERROR    | resume_copilot.analyzers.resume_analyzer:analyze:132 | Analysis failed: Error code: 400 - {'error': {'message': "Prompt must contain the word 'json' in some form to use 'response_format' of type 'json_object'.", 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-08-01 01:32:44.424 | ERROR    | resume_copilot.graph.nodes:analyzer_node:118 | [analyzer_node] Analysis failed: Failed to analyze resume: Error code: 400 - {'error': {'message': "Prompt must contain the word 'json' in some form to use 'response_format' of type 'json_object'.", 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-08-01 01:33:33.123 | INFO     | resume_copilot.analyzers.resume_analyzer:analyze:115 | Analyzing resume (11 chars) against JD (14 chars)
+2026-08-01 01:33:33.123 | INFO     | resume_copilot.analyzers.resume_analyzer:analyze:135 | Analysis completed: match_score=82
+2026-08-01 01:33:33.128 | INFO     | resume_copilot.analyzers.resume_analyzer:analyze:115 | Analyzing resume (11 chars) against JD (14 chars)
+2026-08-01 01:33:33.128 | ERROR    | resume_copilot.analyzers.resume_analyzer:analyze:129 | Structured output validation failed: 1 validation error for AnalysisReport
+match_score
+  Input should be greater than or equal to 0 [type=greater_than_equal, input_value=-5, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.13/v/greater_than_equal
+2026-08-01 01:33:33.153 | INFO     | tests.test_config:test_logger_can_log_capture:99 | test_config_logger_message
+2026-08-01 01:33:33.158 | INFO     | resume_copilot.graph.workflow:build_resume_graph:61 | Building Resume Copilot StateGraph
+2026-08-01 01:33:33.167 | INFO     | resume_copilot.graph.workflow:build_resume_graph:99 | StateGraph compiled successfully
+2026-08-01 01:33:33.178 | INFO     | resume_copilot.graph.workflow:build_resume_graph:61 | Building Resume Copilot StateGraph
+2026-08-01 01:33:33.182 | INFO     | resume_copilot.graph.workflow:build_resume_graph:99 | StateGraph compiled successfully
+2026-08-01 01:33:33.190 | INFO     | resume_copilot.graph.nodes:exporter_node:284 | [exporter_node] Exporting resume to C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-15\test_phase2_rewrite_and_phase30\outputs\resume_20260801_013333.md
+2026-08-01 01:33:33.191 | INFO     | resume_copilot.graph.nodes:exporter_node:291 | [exporter_node] Export successful
+2026-08-01 01:33:33.194 | INFO     | resume_copilot.graph.nodes:parser_node:85 | [parser_node] Parsing PDF: /tmp/resume.pdf
+2026-08-01 01:33:33.195 | INFO     | resume_copilot.graph.nodes:parser_node:95 | [parser_node] Extracted 18 characters
+2026-08-01 01:33:33.197 | INFO     | resume_copilot.graph.nodes:analyzer_node:114 | [analyzer_node] Analyzing resume against JD
+2026-08-01 01:33:33.197 | INFO     | resume_copilot.graph.nodes:analyzer_node:124 | [analyzer_node] Analysis complete: score=80
+2026-08-01 01:33:33.199 | INFO     | resume_copilot.graph.nodes:router_node:154 | [router_node] Routing user message: '帮我导出简历'
+2026-08-01 01:33:33.199 | INFO     | resume_copilot.graph.nodes:router_node:159 | [router_node] Keyword match: export
+2026-08-01 01:33:33.200 | INFO     | resume_copilot.graph.nodes:router_node:154 | [router_node] Routing user message: 'Please export my resume'
+2026-08-01 01:33:33.201 | INFO     | resume_copilot.graph.nodes:router_node:159 | [router_node] Keyword match: export
+2026-08-01 01:33:33.202 | INFO     | resume_copilot.graph.nodes:router_node:154 | [router_node] Routing user message: '保存为 Markdown'
+2026-08-01 01:33:33.202 | INFO     | resume_copilot.graph.nodes:router_node:159 | [router_node] Keyword match: export
+2026-08-01 01:33:33.203 | INFO     | resume_copilot.graph.nodes:router_node:154 | [router_node] Routing user message: '重写项目经历'
+2026-08-01 01:33:33.203 | INFO     | resume_copilot.graph.nodes:router_node:175 | [router_node] Keyword match: rewrite
+2026-08-01 01:33:33.205 | INFO     | resume_copilot.graph.nodes:router_node:154 | [router_node] Routing user message: 'Optimize my experience section'
+2026-08-01 01:33:33.205 | INFO     | resume_copilot.graph.nodes:router_node:175 | [router_node] Keyword match: rewrite
+2026-08-01 01:33:33.206 | INFO     | resume_copilot.graph.nodes:router_node:154 | [router_node] Routing user message: '把这段改得更业务化'
+2026-08-01 01:33:33.207 | INFO     | resume_copilot.graph.nodes:router_node:175 | [router_node] Keyword match: rewrite
+2026-08-01 01:33:33.208 | INFO     | resume_copilot.graph.nodes:router_node:154 | [router_node] Routing user message: 'What is LangGraph?'
+2026-08-01 01:33:33.209 | INFO     | resume_copilot.graph.nodes:router_node:197 | [router_node] LLM decision: chat
+2026-08-01 01:33:33.211 | WARNING  | resume_copilot.graph.nodes:router_node:139 | [router_node] No messages in state; defaulting to chat
+2026-08-01 01:33:33.212 | INFO     | resume_copilot.graph.nodes:rewriter_node:227 | [rewriter_node] Rewriting resume based on request: '加入 LangGraph 关键词'
+2026-08-01 01:33:33.213 | INFO     | resume_copilot.graph.nodes:rewriter_node:256 | [rewriter_node] Rewrite complete: 45 characters
+2026-08-01 01:33:33.217 | INFO     | resume_copilot.graph.nodes:exporter_node:284 | [exporter_node] Exporting resume to C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-15\test_exporter_node_writes_file0\resume_20260801_013333.md
+2026-08-01 01:33:33.218 | INFO     | resume_copilot.graph.nodes:exporter_node:291 | [exporter_node] Export successful
+2026-08-01 01:33:33.224 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-15\test_parse_pdf_success0\valid_resume.pdf
+2026-08-01 01:33:33.234 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:95 | Successfully parsed PDF 'C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-15\test_parse_pdf_success0\valid_resume.pdf': 48 characters extracted
+2026-08-01 01:33:33.235 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: \non\existent\resume.pdf
+2026-08-01 01:33:33.236 | ERROR    | resume_copilot.parsers.pdf_parser:_validate_file_path:110 | PDF file not found: \non\existent\resume.pdf
+2026-08-01 01:33:33.238 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-15\test_parse_pdf_unsupported_ext0\resume.txt
+2026-08-01 01:33:33.239 | ERROR    | resume_copilot.parsers.pdf_parser:_validate_file_path:118 | Unsupported file extension '.txt', expected '.pdf'
+2026-08-01 01:33:33.241 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-15\test_parse_pdf_empty_content0\empty_resume.pdf
+2026-08-01 01:33:33.243 | ERROR    | resume_copilot.parsers.pdf_parser:parse_pdf:92 | PDF 'C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-15\test_parse_pdf_empty_content0\empty_resume.pdf' contains no extractable text
+2026-08-01 01:34:23.526 | INFO     | resume_copilot.graph.workflow:build_resume_graph:61 | Building Resume Copilot StateGraph
+2026-08-01 01:34:23.536 | INFO     | resume_copilot.graph.workflow:build_resume_graph:99 | StateGraph compiled successfully
+2026-08-01 01:34:23.537 | INFO     | resume_copilot.cli:__init__:41 | CLI initialized with thread_id=cli-a918fefb
+2026-08-01 01:34:32.016 | INFO     | resume_copilot.graph.nodes:parser_node:85 | [parser_node] Parsing PDF: C:\ai-agentlearning\Resume Copilot\ai-agent-day15\data\刘彭果简历.pdf
+2026-08-01 01:34:32.016 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: C:\ai-agentlearning\Resume Copilot\ai-agent-day15\data\刘彭果简历.pdf
+2026-08-01 01:34:32.126 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:95 | Successfully parsed PDF 'C:\ai-agentlearning\Resume Copilot\ai-agent-day15\data\刘彭果简历.pdf': 3785 characters extracted
+2026-08-01 01:34:32.127 | INFO     | resume_copilot.graph.nodes:parser_node:95 | [parser_node] Extracted 3785 characters
+2026-08-01 01:34:32.128 | INFO     | resume_copilot.graph.nodes:analyzer_node:114 | [analyzer_node] Analyzing resume against JD
+2026-08-01 01:34:33.774 | INFO     | resume_copilot.analyzers.resume_analyzer:analyze:115 | Analyzing resume (3785 chars) against JD (1552 chars)
+2026-08-01 01:35:01.101 | ERROR    | resume_copilot.analyzers.resume_analyzer:analyze:132 | Analysis failed: Failed to parse AnalysisReport from completion {"overall_match_summary": "候选人具备 LLM 应用开发的基础项目经验，尤其在 LangGraph、Agentic RAG、ChromaDB、Prompt Engineering 和防幻觉溯源方面有实际落地案例，与 JD 中 RAG 检索增强、Agent 工作流和 Prompt 控制等要求部分匹配。但作为本科大二在读生，缺乏 3 年以上开发经验，且未涉及多智能体协作、Function Calling 深度应用、GraphRAG、MCP 协议、评估体系、安全护栏、云原生部署等 JD 核心要求，整体匹配度偏低。", "strengths": [{"strength": "LangGraph 实际项目经验", "evidence": "独立开发基于 LangGraph StateGraph 的 Agentic RAG 系统，定义 Router → Retrieval/Calculator/Chat 状态流转图，展示了对图状态机和 Agent 工作流的理解。"}, {"strength": "RAG 技术栈落地能力", "evidence": "使用 ChromaDB 完成向量存储、批处理写入和语义检索，并封装检索接口，符合 JD 中对向量数据库（ChromaDB）的使用要求。"}, {"strength": "Prompt Engineering 与结构化输出", "evidence": "通过 Pydantic Structured Output 实现 Router 路由节点，设计强边界约束 Prompt 和 Contextualization 策略，体现了对结构化输出和 Prompt 控制的实际掌握。"}, {"strength": "防幻觉与可追溯问答体系", "evidence": "构建 Citation 页码标注机制，D 级幻觉发生率降至 0%，回答 100% 可追溯，符合 JD 中质量保障与安全性的方向。"}, {"strength": "多轮对话记忆机制", "evidence": "使用 MemorySaver + thread_id 实现跨轮上下文持久化与断点恢复，并通过 Contextualization 解决代词消解，具备多轮对话引擎开发经验。"}], "weaknesses_gaps": [{"gap": "学历与经验不达标", "detail": "候选人为本科大二在读（2024-2028），年仅 19 岁，无 3 年以上开发经验，不满足 JD 中“本科及以上学历，3 年以上开发经验”的硬性要求。"}, {"gap": "职业方向不一致", "detail": "候选人求职意向为 Python，但个人优势中明确“目标从事嵌入式软件/固件工程师岗位”，与 JD 的 LLM Agent 应用开发方向存在明显偏差。"}, {"gap": "缺乏多智能体（Multi-Agent）协作经验", "detail": "JD 明确要求基于 LangGraph、AutoGen、CrewAI 等实现多智能体协作，但候选人的项目为单 Agent 工作流，未涉及 Agent 间通信、任务分配与冲突消解。"}, {"gap": "Function Calling / Tool Use 机制不完整", "detail": "简历中虽提及 Function Calling，但仅作为 Router 路由意图判断，未设计 Agent 对外部工具、API、代码解释器的自主调用体系，也未构建沙箱化代码执行环境。"}, {"gap": "缺乏 RAG 深度优化", "detail": "未涉及 GraphRAG、知识图谱增强、重排序（Rerank）、召回排序优化等 JD 高级要求，简历中仅体现基础向量检索。"}, {"gap": "缺少评估体系与安全护栏", "detail": "JD 要求搭建任务成功率、工具调用准确率、端到端效果评测体系，并建立 Guardrails，但候选人仅做了基础测试和幻觉压测，无自动化评测流水线和安全护栏设计。"}, {"gap": "工程化部署经验缺失", "detail": "未涉及 Docker、Kubernetes、微服务架构等云原生技术，且项目未体现出线上稳定性保障、性能优化与成本控制能力。"}, {"gap": "前沿技术跟踪不足", "detail": "JD 提及 Claude Computer Use、GPT-5 Agent、MCP 协议等，候选人简历中完全未涉及 MCP，也没有多模态、浏览器自动化、桌面操作等相关经验。"}], "missing_keywords": ["AutoGen", "CrewAI", "LlamaIndex", "Semantic Kernel", "GraphRAG", "MCP（Model Context Protocol）", "ReAct", "Plan-and-Execute", "Multi-Agent 协作", "Agent 间通信", "任务分配", "冲突消解", "Function Calling 工具调用体系", "沙箱化代码执行", "浏览器自动化", "多模态 Agent", "Guardrails", "自动化评测流水线", "任务成功率", "工具调用准确率", "Docker", "Kubernetes", "微服务架构", "Claude Computer Use", "GPT-5 Agent", "Rerank 重排序", "知识图谱"], "project_advice": [{"project_name": "RAG智能知识库系统", "star_analysis": {"situation": "企业内部存在海量非结构化文档，用户需要从手册/文档中快速获取精准答案，传统线性 RAG 流程无法处理复杂意图分流、多轮对话上下文保持和严格防幻觉溯源等需求，文档信息检索效率低，平均耗时达到分钟级。", "task": "从零搭建企业级 Agentic RAG 智能知识库系统，实现复杂意图动态路由、多轮对话上下文持久化、严格防幻觉溯源，并确保答案可审计、可追溯。作为唯一开发者，需要完成系统架构设计、核心模块开发、测试交付全流程。", "action": "基于 LangGraph StateGraph 构建多节点 Agent 工作流，设计全局强类型 AgentState，定义 Router → Retrieval/Calculator/Chat 三路分支；使用 Pydantic Structured Output 实现毫秒级意图识别；通过 MemorySaver + thread_id 实现对话状态物理持久化与断点恢复；引入 Contextualization 上下文重写策略解决代词消解；基于 ChromaDB 完成文档向量化、批处理写入与语义检索；设计强边界约束 Prompt 模板和 Citation 页码标注机制，完成全链路端到端测试与幻觉压测。", "result": "文档信息检索效率提升 70%，用户获取答案时间从分钟级降至秒级；知识库问答准确率达到 95%+；回答可追溯覆盖率 100%，D 级幻觉发生率降至 0%；多轮对话上下文保持准确率 90%+；Router 意图识别准确率 95%+；单批次支持 1000+ 文档并行入库，端到端问答响应时间 2-3 秒。"}, "optimization_advice": "1. 引入多智能体协作：在现有单一 Agent 工作流中增加 Planner、Executor、Critic 等角色，使用 LangGraph 的 Send API 或子图实现多 Agent 任务分配与结果审核，体现 Multi-Agent 设计能力。2. 扩展 Function Calling / Tool Use：将 Router 从单纯意图分流升级为可动态调用外部 API、数据库查询、代码解释器等工具，并将 Calculator 节点重构为沙箱化代码执行环境。3. 增加 GraphRAG：在 ChromaDB 基础上引入知识图谱实体关系抽取，构建 GraphRAG 管线，优化多跳问题回答能力。4. 搭建评估体系：设计自动化评测流水线，定义任务成功率、工具调用准确率、检索召回率、端到端回答准确率等指标，补充人工评估规范。5. 加入 Guardrails：实现输入输出安全过滤、有害内容拦截、操作权限控制，防止 Agent 执行危险动作。6. 采用 MCP 协议：将外部知识库、API 和工具封装为标准 MCP Server，体现模型与外部工具标准化集成能力。7. 工程化部署：使用 Docker 容器化项目，编写 docker-compose 或 Kubernetes 部署配置，补充压力测试、性能监控与成本分析。8. 在简历中补充 ReAct 循环、Plan-and-Execute 等 Agent 范式的思考，以及多模态、浏览器自动化等扩展方向的探索，以更贴近 JD 要求。"}]}. Got: 7 validation errors for AnalysisReport
+match_score
+  Field required [type=missing, input_value={'overall_match_summary':...贴近 JD 要求。'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+summary
+  Field required [type=missing, input_value={'overall_match_summary':...贴近 JD 要求。'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+strengths.0
+  Input should be a valid string [type=string_type, input_value={'strength': 'LangGraph ... 工作流的理解。'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/string_type
+strengths.1
+  Input should be a valid string [type=string_type, input_value={'strength': 'RAG 技术...B）的使用要求。'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/string_type
+strengths.2
+  Input should be a valid string [type=string_type, input_value={'strength': 'Prompt Engi...制的实际掌握。'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/string_type
+strengths.3
+  Input should be a valid string [type=string_type, input_value={'strength': '防幻觉...安全性的方向。'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/string_type
+strengths.4
+  Input should be a valid string [type=string_type, input_value={'strength': '多轮对...引擎开发经验。'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/string_type
+For troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/OUTPUT_PARSING_FAILURE 
+2026-08-01 01:35:01.103 | ERROR    | resume_copilot.graph.nodes:analyzer_node:118 | [analyzer_node] Analysis failed: Failed to analyze resume: Failed to parse AnalysisReport from completion {"overall_match_summary": "候选人具备 LLM 应用开发的基础项目经验，尤其在 LangGraph、Agentic RAG、ChromaDB、Prompt Engineering 和防幻觉溯源方面有实际落地案例，与 JD 中 RAG 检索增强、Agent 工作流和 Prompt 控制等要求部分匹配。但作为本科大二在读生，缺乏 3 年以上开发经验，且未涉及多智能体协作、Function Calling 深度应用、GraphRAG、MCP 协议、评估体系、安全护栏、云原生部署等 JD 核心要求，整体匹配度偏低。", "strengths": [{"strength": "LangGraph 实际项目经验", "evidence": "独立开发基于 LangGraph StateGraph 的 Agentic RAG 系统，定义 Router → Retrieval/Calculator/Chat 状态流转图，展示了对图状态机和 Agent 工作流的理解。"}, {"strength": "RAG 技术栈落地能力", "evidence": "使用 ChromaDB 完成向量存储、批处理写入和语义检索，并封装检索接口，符合 JD 中对向量数据库（ChromaDB）的使用要求。"}, {"strength": "Prompt Engineering 与结构化输出", "evidence": "通过 Pydantic Structured Output 实现 Router 路由节点，设计强边界约束 Prompt 和 Contextualization 策略，体现了对结构化输出和 Prompt 控制的实际掌握。"}, {"strength": "防幻觉与可追溯问答体系", "evidence": "构建 Citation 页码标注机制，D 级幻觉发生率降至 0%，回答 100% 可追溯，符合 JD 中质量保障与安全性的方向。"}, {"strength": "多轮对话记忆机制", "evidence": "使用 MemorySaver + thread_id 实现跨轮上下文持久化与断点恢复，并通过 Contextualization 解决代词消解，具备多轮对话引擎开发经验。"}], "weaknesses_gaps": [{"gap": "学历与经验不达标", "detail": "候选人为本科大二在读（2024-2028），年仅 19 岁，无 3 年以上开发经验，不满足 JD 中“本科及以上学历，3 年以上开发经验”的硬性要求。"}, {"gap": "职业方向不一致", "detail": "候选人求职意向为 Python，但个人优势中明确“目标从事嵌入式软件/固件工程师岗位”，与 JD 的 LLM Agent 应用开发方向存在明显偏差。"}, {"gap": "缺乏多智能体（Multi-Agent）协作经验", "detail": "JD 明确要求基于 LangGraph、AutoGen、CrewAI 等实现多智能体协作，但候选人的项目为单 Agent 工作流，未涉及 Agent 间通信、任务分配与冲突消解。"}, {"gap": "Function Calling / Tool Use 机制不完整", "detail": "简历中虽提及 Function Calling，但仅作为 Router 路由意图判断，未设计 Agent 对外部工具、API、代码解释器的自主调用体系，也未构建沙箱化代码执行环境。"}, {"gap": "缺乏 RAG 深度优化", "detail": "未涉及 GraphRAG、知识图谱增强、重排序（Rerank）、召回排序优化等 JD 高级要求，简历中仅体现基础向量检索。"}, {"gap": "缺少评估体系与安全护栏", "detail": "JD 要求搭建任务成功率、工具调用准确率、端到端效果评测体系，并建立 Guardrails，但候选人仅做了基础测试和幻觉压测，无自动化评测流水线和安全护栏设计。"}, {"gap": "工程化部署经验缺失", "detail": "未涉及 Docker、Kubernetes、微服务架构等云原生技术，且项目未体现出线上稳定性保障、性能优化与成本控制能力。"}, {"gap": "前沿技术跟踪不足", "detail": "JD 提及 Claude Computer Use、GPT-5 Agent、MCP 协议等，候选人简历中完全未涉及 MCP，也没有多模态、浏览器自动化、桌面操作等相关经验。"}], "missing_keywords": ["AutoGen", "CrewAI", "LlamaIndex", "Semantic Kernel", "GraphRAG", "MCP（Model Context Protocol）", "ReAct", "Plan-and-Execute", "Multi-Agent 协作", "Agent 间通信", "任务分配", "冲突消解", "Function Calling 工具调用体系", "沙箱化代码执行", "浏览器自动化", "多模态 Agent", "Guardrails", "自动化评测流水线", "任务成功率", "工具调用准确率", "Docker", "Kubernetes", "微服务架构", "Claude Computer Use", "GPT-5 Agent", "Rerank 重排序", "知识图谱"], "project_advice": [{"project_name": "RAG智能知识库系统", "star_analysis": {"situation": "企业内部存在海量非结构化文档，用户需要从手册/文档中快速获取精准答案，传统线性 RAG 流程无法处理复杂意图分流、多轮对话上下文保持和严格防幻觉溯源等需求，文档信息检索效率低，平均耗时达到分钟级。", "task": "从零搭建企业级 Agentic RAG 智能知识库系统，实现复杂意图动态路由、多轮对话上下文持久化、严格防幻觉溯源，并确保答案可审计、可追溯。作为唯一开发者，需要完成系统架构设计、核心模块开发、测试交付全流程。", "action": "基于 LangGraph StateGraph 构建多节点 Agent 工作流，设计全局强类型 AgentState，定义 Router → Retrieval/Calculator/Chat 三路分支；使用 Pydantic Structured Output 实现毫秒级意图识别；通过 MemorySaver + thread_id 实现对话状态物理持久化与断点恢复；引入 Contextualization 上下文重写策略解决代词消解；基于 ChromaDB 完成文档向量化、批处理写入与语义检索；设计强边界约束 Prompt 模板和 Citation 页码标注机制，完成全链路端到端测试与幻觉压测。", "result": "文档信息检索效率提升 70%，用户获取答案时间从分钟级降至秒级；知识库问答准确率达到 95%+；回答可追溯覆盖率 100%，D 级幻觉发生率降至 0%；多轮对话上下文保持准确率 90%+；Router 意图识别准确率 95%+；单批次支持 1000+ 文档并行入库，端到端问答响应时间 2-3 秒。"}, "optimization_advice": "1. 引入多智能体协作：在现有单一 Agent 工作流中增加 Planner、Executor、Critic 等角色，使用 LangGraph 的 Send API 或子图实现多 Agent 任务分配与结果审核，体现 Multi-Agent 设计能力。2. 扩展 Function Calling / Tool Use：将 Router 从单纯意图分流升级为可动态调用外部 API、数据库查询、代码解释器等工具，并将 Calculator 节点重构为沙箱化代码执行环境。3. 增加 GraphRAG：在 ChromaDB 基础上引入知识图谱实体关系抽取，构建 GraphRAG 管线，优化多跳问题回答能力。4. 搭建评估体系：设计自动化评测流水线，定义任务成功率、工具调用准确率、检索召回率、端到端回答准确率等指标，补充人工评估规范。5. 加入 Guardrails：实现输入输出安全过滤、有害内容拦截、操作权限控制，防止 Agent 执行危险动作。6. 采用 MCP 协议：将外部知识库、API 和工具封装为标准 MCP Server，体现模型与外部工具标准化集成能力。7. 工程化部署：使用 Docker 容器化项目，编写 docker-compose 或 Kubernetes 部署配置，补充压力测试、性能监控与成本分析。8. 在简历中补充 ReAct 循环、Plan-and-Execute 等 Agent 范式的思考，以及多模态、浏览器自动化等扩展方向的探索，以更贴近 JD 要求。"}]}. Got: 7 validation errors for AnalysisReport
+match_score
+  Field required [type=missing, input_value={'overall_match_summary':...贴近 JD 要求。'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+summary
+  Field required [type=missing, input_value={'overall_match_summary':...贴近 JD 要求。'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+strengths.0
+  Input should be a valid string [type=string_type, input_value={'strength': 'LangGraph ... 工作流的理解。'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/string_type
+strengths.1
+  Input should be a valid string [type=string_type, input_value={'strength': 'RAG 技术...B）的使用要求。'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/string_type
+strengths.2
+  Input should be a valid string [type=string_type, input_value={'strength': 'Prompt Engi...制的实际掌握。'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/string_type
+strengths.3
+  Input should be a valid string [type=string_type, input_value={'strength': '防幻觉...安全性的方向。'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/string_type
+strengths.4
+  Input should be a valid string [type=string_type, input_value={'strength': '多轮对...引擎开发经验。'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/string_type
+For troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/OUTPUT_PARSING_FAILURE 
