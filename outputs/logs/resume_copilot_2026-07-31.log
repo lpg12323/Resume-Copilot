@@ -1,0 +1,2 @@
+2026-07-31 23:57:17.150 | INFO     | tests.test_config:test_logger_can_log_capture:77 | test_config_logger_message
+2026-07-31 23:57:45.038 | INFO     | tests.test_config:test_logger_can_log_capture:81 | test_config_logger_message
