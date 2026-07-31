@@ -1,0 +1,23 @@
+2026-08-01 00:08:32.302 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: \non\existent\resume.pdf
+2026-08-01 00:08:32.302 | ERROR    | resume_copilot.parsers.pdf_parser:_validate_file_path:110 | PDF file not found: \non\existent\resume.pdf
+2026-08-01 00:08:32.306 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-2\test_parse_pdf_unsupported_ext0\resume.txt
+2026-08-01 00:08:32.306 | ERROR    | resume_copilot.parsers.pdf_parser:_validate_file_path:118 | Unsupported file extension '.txt', expected '.pdf'
+2026-08-01 00:08:32.309 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-2\test_parse_pdf_empty_content0\empty_resume.pdf
+2026-08-01 00:08:32.321 | ERROR    | resume_copilot.parsers.pdf_parser:parse_pdf:92 | PDF 'C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-2\test_parse_pdf_empty_content0\empty_resume.pdf' contains no extractable text
+2026-08-01 00:09:29.877 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-3\test_parse_pdf_success0\valid_resume.pdf
+2026-08-01 00:09:29.888 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:95 | Successfully parsed PDF 'C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-3\test_parse_pdf_success0\valid_resume.pdf': 48 characters extracted
+2026-08-01 00:09:29.890 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: \non\existent\resume.pdf
+2026-08-01 00:09:29.890 | ERROR    | resume_copilot.parsers.pdf_parser:_validate_file_path:110 | PDF file not found: \non\existent\resume.pdf
+2026-08-01 00:09:29.894 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-3\test_parse_pdf_unsupported_ext0\resume.txt
+2026-08-01 00:09:29.894 | ERROR    | resume_copilot.parsers.pdf_parser:_validate_file_path:118 | Unsupported file extension '.txt', expected '.pdf'
+2026-08-01 00:09:29.897 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-3\test_parse_pdf_empty_content0\empty_resume.pdf
+2026-08-01 00:09:29.899 | ERROR    | resume_copilot.parsers.pdf_parser:parse_pdf:92 | PDF 'C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-3\test_parse_pdf_empty_content0\empty_resume.pdf' contains no extractable text
+2026-08-01 00:09:41.192 | INFO     | tests.test_config:test_logger_can_log_capture:81 | test_config_logger_message
+2026-08-01 00:09:41.199 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-4\test_parse_pdf_success0\valid_resume.pdf
+2026-08-01 00:09:41.211 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:95 | Successfully parsed PDF 'C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-4\test_parse_pdf_success0\valid_resume.pdf': 48 characters extracted
+2026-08-01 00:09:41.213 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: \non\existent\resume.pdf
+2026-08-01 00:09:41.214 | ERROR    | resume_copilot.parsers.pdf_parser:_validate_file_path:110 | PDF file not found: \non\existent\resume.pdf
+2026-08-01 00:09:41.217 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-4\test_parse_pdf_unsupported_ext0\resume.txt
+2026-08-01 00:09:41.217 | ERROR    | resume_copilot.parsers.pdf_parser:_validate_file_path:118 | Unsupported file extension '.txt', expected '.pdf'
+2026-08-01 00:09:41.221 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-4\test_parse_pdf_empty_content0\empty_resume.pdf
+2026-08-01 00:09:41.222 | ERROR    | resume_copilot.parsers.pdf_parser:parse_pdf:92 | PDF 'C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-4\test_parse_pdf_empty_content0\empty_resume.pdf' contains no extractable text

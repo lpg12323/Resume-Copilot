@@ -38,6 +38,7 @@ dev = [
     "black>=24.0",
     "ruff>=0.4.0",
     "mypy>=1.9.0",
+    "fpdf2>=2.8.0",
 ]
 
 [project.urls]
