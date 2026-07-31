@@ -145,3 +145,54 @@ match_score
 2026-08-01 00:28:42.653 | ERROR    | resume_copilot.parsers.pdf_parser:_validate_file_path:118 | Unsupported file extension '.txt', expected '.pdf'
 2026-08-01 00:28:42.656 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-9\test_parse_pdf_empty_content0\empty_resume.pdf
 2026-08-01 00:28:42.658 | ERROR    | resume_copilot.parsers.pdf_parser:parse_pdf:92 | PDF 'C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-9\test_parse_pdf_empty_content0\empty_resume.pdf' contains no extractable text
+2026-08-01 00:33:22.828 | INFO     | resume_copilot.graph.workflow:build_resume_graph:61 | Building Resume Copilot StateGraph
+2026-08-01 00:33:22.839 | INFO     | resume_copilot.graph.workflow:build_resume_graph:99 | StateGraph compiled successfully
+2026-08-01 00:33:22.852 | INFO     | resume_copilot.graph.workflow:build_resume_graph:61 | Building Resume Copilot StateGraph
+2026-08-01 00:33:22.856 | INFO     | resume_copilot.graph.workflow:build_resume_graph:99 | StateGraph compiled successfully
+2026-08-01 00:33:22.865 | INFO     | resume_copilot.graph.nodes:exporter_node:279 | [exporter_node] Exporting resume to C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-10\test_phase2_rewrite_and_phase30\outputs\resume_20260801_003322.md
+2026-08-01 00:33:22.867 | INFO     | resume_copilot.graph.nodes:exporter_node:286 | [exporter_node] Export successful
+2026-08-01 00:33:31.929 | INFO     | resume_copilot.analyzers.resume_analyzer:analyze:105 | Analyzing resume (11 chars) against JD (14 chars)
+2026-08-01 00:33:31.930 | INFO     | resume_copilot.analyzers.resume_analyzer:analyze:125 | Analysis completed: match_score=82
+2026-08-01 00:33:31.936 | INFO     | resume_copilot.analyzers.resume_analyzer:analyze:105 | Analyzing resume (11 chars) against JD (14 chars)
+2026-08-01 00:33:31.936 | ERROR    | resume_copilot.analyzers.resume_analyzer:analyze:119 | Structured output validation failed: 1 validation error for AnalysisReport
+match_score
+  Input should be greater than or equal to 0 [type=greater_than_equal, input_value=-5, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.13/v/greater_than_equal
+2026-08-01 00:33:31.955 | INFO     | tests.test_config:test_logger_can_log_capture:81 | test_config_logger_message
+2026-08-01 00:33:31.962 | INFO     | resume_copilot.graph.workflow:build_resume_graph:61 | Building Resume Copilot StateGraph
+2026-08-01 00:33:31.970 | INFO     | resume_copilot.graph.workflow:build_resume_graph:99 | StateGraph compiled successfully
+2026-08-01 00:33:31.982 | INFO     | resume_copilot.graph.workflow:build_resume_graph:61 | Building Resume Copilot StateGraph
+2026-08-01 00:33:31.986 | INFO     | resume_copilot.graph.workflow:build_resume_graph:99 | StateGraph compiled successfully
+2026-08-01 00:33:31.994 | INFO     | resume_copilot.graph.nodes:exporter_node:279 | [exporter_node] Exporting resume to C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-11\test_phase2_rewrite_and_phase30\outputs\resume_20260801_003331.md
+2026-08-01 00:33:31.995 | INFO     | resume_copilot.graph.nodes:exporter_node:286 | [exporter_node] Export successful
+2026-08-01 00:33:32.000 | INFO     | resume_copilot.graph.nodes:parser_node:85 | [parser_node] Parsing PDF: /tmp/resume.pdf
+2026-08-01 00:33:32.000 | INFO     | resume_copilot.graph.nodes:parser_node:95 | [parser_node] Extracted 18 characters
+2026-08-01 00:33:32.003 | INFO     | resume_copilot.graph.nodes:analyzer_node:114 | [analyzer_node] Analyzing resume against JD
+2026-08-01 00:33:32.004 | INFO     | resume_copilot.graph.nodes:analyzer_node:124 | [analyzer_node] Analysis complete: score=80
+2026-08-01 00:33:32.006 | INFO     | resume_copilot.graph.nodes:router_node:154 | [router_node] Routing user message: '帮我导出简历'
+2026-08-01 00:33:32.006 | INFO     | resume_copilot.graph.nodes:router_node:159 | [router_node] Keyword match: export
+2026-08-01 00:33:32.008 | INFO     | resume_copilot.graph.nodes:router_node:154 | [router_node] Routing user message: 'Please export my resume'
+2026-08-01 00:33:32.008 | INFO     | resume_copilot.graph.nodes:router_node:159 | [router_node] Keyword match: export
+2026-08-01 00:33:32.009 | INFO     | resume_copilot.graph.nodes:router_node:154 | [router_node] Routing user message: '保存为 Markdown'
+2026-08-01 00:33:32.010 | INFO     | resume_copilot.graph.nodes:router_node:159 | [router_node] Keyword match: export
+2026-08-01 00:33:32.011 | INFO     | resume_copilot.graph.nodes:router_node:154 | [router_node] Routing user message: '重写项目经历'
+2026-08-01 00:33:32.011 | INFO     | resume_copilot.graph.nodes:router_node:175 | [router_node] Keyword match: rewrite
+2026-08-01 00:33:32.013 | INFO     | resume_copilot.graph.nodes:router_node:154 | [router_node] Routing user message: 'Optimize my experience section'
+2026-08-01 00:33:32.013 | INFO     | resume_copilot.graph.nodes:router_node:175 | [router_node] Keyword match: rewrite
+2026-08-01 00:33:32.015 | INFO     | resume_copilot.graph.nodes:router_node:154 | [router_node] Routing user message: '把这段改得更业务化'
+2026-08-01 00:33:32.015 | INFO     | resume_copilot.graph.nodes:router_node:175 | [router_node] Keyword match: rewrite
+2026-08-01 00:33:32.016 | INFO     | resume_copilot.graph.nodes:router_node:154 | [router_node] Routing user message: 'What is LangGraph?'
+2026-08-01 00:33:32.018 | INFO     | resume_copilot.graph.nodes:router_node:192 | [router_node] LLM decision: chat
+2026-08-01 00:33:32.019 | WARNING  | resume_copilot.graph.nodes:router_node:139 | [router_node] No messages in state; defaulting to chat
+2026-08-01 00:33:32.021 | INFO     | resume_copilot.graph.nodes:rewriter_node:222 | [rewriter_node] Rewriting resume based on request: '加入 LangGraph 关键词'
+2026-08-01 00:33:32.022 | INFO     | resume_copilot.graph.nodes:rewriter_node:251 | [rewriter_node] Rewrite complete: 45 characters
+2026-08-01 00:33:32.025 | INFO     | resume_copilot.graph.nodes:exporter_node:279 | [exporter_node] Exporting resume to C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-11\test_exporter_node_writes_file0\resume_20260801_003332.md
+2026-08-01 00:33:32.026 | INFO     | resume_copilot.graph.nodes:exporter_node:286 | [exporter_node] Export successful
+2026-08-01 00:33:32.032 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-11\test_parse_pdf_success0\valid_resume.pdf
+2026-08-01 00:33:32.043 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:95 | Successfully parsed PDF 'C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-11\test_parse_pdf_success0\valid_resume.pdf': 48 characters extracted
+2026-08-01 00:33:32.045 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: \non\existent\resume.pdf
+2026-08-01 00:33:32.046 | ERROR    | resume_copilot.parsers.pdf_parser:_validate_file_path:110 | PDF file not found: \non\existent\resume.pdf
+2026-08-01 00:33:32.049 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-11\test_parse_pdf_unsupported_ext0\resume.txt
+2026-08-01 00:33:32.049 | ERROR    | resume_copilot.parsers.pdf_parser:_validate_file_path:118 | Unsupported file extension '.txt', expected '.pdf'
+2026-08-01 00:33:32.052 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-11\test_parse_pdf_empty_content0\empty_resume.pdf
+2026-08-01 00:33:32.054 | ERROR    | resume_copilot.parsers.pdf_parser:parse_pdf:92 | PDF 'C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-11\test_parse_pdf_empty_content0\empty_resume.pdf' contains no extractable text
