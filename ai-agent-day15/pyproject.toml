@@ -23,6 +23,7 @@ classifiers = [
 ]
 dependencies = [
     "langgraph>=0.0.50",
+    "langchain-core>=0.3.0",
     "langchain-openai>=0.1.0",
     "pydantic>=2.0",
     "pydantic-settings>=2.0",

@@ -21,3 +21,42 @@
 2026-08-01 00:09:41.217 | ERROR    | resume_copilot.parsers.pdf_parser:_validate_file_path:118 | Unsupported file extension '.txt', expected '.pdf'
 2026-08-01 00:09:41.221 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-4\test_parse_pdf_empty_content0\empty_resume.pdf
 2026-08-01 00:09:41.222 | ERROR    | resume_copilot.parsers.pdf_parser:parse_pdf:92 | PDF 'C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-4\test_parse_pdf_empty_content0\empty_resume.pdf' contains no extractable text
+2026-08-01 00:16:01.188 | INFO     | resume_copilot.analyzers.resume_analyzer:analyze:105 | Analyzing resume (11 chars) against JD (14 chars)
+2026-08-01 00:16:01.188 | INFO     | resume_copilot.analyzers.resume_analyzer:analyze:125 | Analysis completed: match_score=82
+2026-08-01 00:16:01.195 | INFO     | resume_copilot.analyzers.resume_analyzer:analyze:105 | Analyzing resume (11 chars) against JD (14 chars)
+2026-08-01 00:16:01.195 | ERROR    | resume_copilot.analyzers.resume_analyzer:analyze:119 | Structured output validation failed: 1 validation error for AnalysisReport
+match_score
+  Input should be greater than or equal to 0 [type=greater_than_equal, input_value=-5, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.13/v/greater_than_equal
+2026-08-01 00:16:09.947 | INFO     | resume_copilot.analyzers.resume_analyzer:analyze:105 | Analyzing resume (11 chars) against JD (14 chars)
+2026-08-01 00:16:09.948 | INFO     | resume_copilot.analyzers.resume_analyzer:analyze:125 | Analysis completed: match_score=82
+2026-08-01 00:16:09.953 | INFO     | resume_copilot.analyzers.resume_analyzer:analyze:105 | Analyzing resume (11 chars) against JD (14 chars)
+2026-08-01 00:16:09.953 | ERROR    | resume_copilot.analyzers.resume_analyzer:analyze:119 | Structured output validation failed: 1 validation error for AnalysisReport
+match_score
+  Input should be greater than or equal to 0 [type=greater_than_equal, input_value=-5, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.13/v/greater_than_equal
+2026-08-01 00:16:09.974 | INFO     | tests.test_config:test_logger_can_log_capture:81 | test_config_logger_message
+2026-08-01 00:16:09.980 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-5\test_parse_pdf_success0\valid_resume.pdf
+2026-08-01 00:16:09.997 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:95 | Successfully parsed PDF 'C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-5\test_parse_pdf_success0\valid_resume.pdf': 48 characters extracted
+2026-08-01 00:16:09.999 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: \non\existent\resume.pdf
+2026-08-01 00:16:09.999 | ERROR    | resume_copilot.parsers.pdf_parser:_validate_file_path:110 | PDF file not found: \non\existent\resume.pdf
+2026-08-01 00:16:10.003 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-5\test_parse_pdf_unsupported_ext0\resume.txt
+2026-08-01 00:16:10.003 | ERROR    | resume_copilot.parsers.pdf_parser:_validate_file_path:118 | Unsupported file extension '.txt', expected '.pdf'
+2026-08-01 00:16:10.006 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-5\test_parse_pdf_empty_content0\empty_resume.pdf
+2026-08-01 00:16:10.008 | ERROR    | resume_copilot.parsers.pdf_parser:parse_pdf:92 | PDF 'C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-5\test_parse_pdf_empty_content0\empty_resume.pdf' contains no extractable text
+2026-08-01 00:16:46.326 | INFO     | resume_copilot.analyzers.resume_analyzer:analyze:105 | Analyzing resume (11 chars) against JD (14 chars)
+2026-08-01 00:16:46.327 | INFO     | resume_copilot.analyzers.resume_analyzer:analyze:125 | Analysis completed: match_score=82
+2026-08-01 00:16:46.332 | INFO     | resume_copilot.analyzers.resume_analyzer:analyze:105 | Analyzing resume (11 chars) against JD (14 chars)
+2026-08-01 00:16:46.332 | ERROR    | resume_copilot.analyzers.resume_analyzer:analyze:119 | Structured output validation failed: 1 validation error for AnalysisReport
+match_score
+  Input should be greater than or equal to 0 [type=greater_than_equal, input_value=-5, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.13/v/greater_than_equal
+2026-08-01 00:16:46.350 | INFO     | tests.test_config:test_logger_can_log_capture:81 | test_config_logger_message
+2026-08-01 00:16:46.356 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-6\test_parse_pdf_success0\valid_resume.pdf
+2026-08-01 00:16:46.366 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:95 | Successfully parsed PDF 'C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-6\test_parse_pdf_success0\valid_resume.pdf': 48 characters extracted
+2026-08-01 00:16:46.368 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: \non\existent\resume.pdf
+2026-08-01 00:16:46.368 | ERROR    | resume_copilot.parsers.pdf_parser:_validate_file_path:110 | PDF file not found: \non\existent\resume.pdf
+2026-08-01 00:16:46.371 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-6\test_parse_pdf_unsupported_ext0\resume.txt
+2026-08-01 00:16:46.372 | ERROR    | resume_copilot.parsers.pdf_parser:_validate_file_path:118 | Unsupported file extension '.txt', expected '.pdf'
+2026-08-01 00:16:46.375 | INFO     | resume_copilot.parsers.pdf_parser:parse_pdf:54 | Starting PDF parsing: C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-6\test_parse_pdf_empty_content0\empty_resume.pdf
+2026-08-01 00:16:46.377 | ERROR    | resume_copilot.parsers.pdf_parser:parse_pdf:92 | PDF 'C:\Users\asus\AppData\Local\Temp\pytest-of-asus\pytest-6\test_parse_pdf_empty_content0\empty_resume.pdf' contains no extractable text
