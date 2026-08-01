@@ -1,5 +1,9 @@
 # Resume Copilot
 
+## 🎬 Interactive CLI Demo
+
+![Resume Copilot Demo](docs/demo.gif)
+
 > AI 简历分析与优化 Agent，基于 LangGraph 状态机与大语言模型，帮助求职者快速识别简历与目标岗位 JD 的匹配度，并提供可交互的修改建议与局部重写能力。
 
 ---
