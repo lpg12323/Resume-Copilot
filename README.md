@@ -164,11 +164,19 @@ python main.py
 ```text
 Resume Copilot/
 ├── data/                       # 输入 PDF 简历与 JD 示例
-│   └── sample_resume.pdf
+│   ├── .gitkeep
+│   ├── ai开发JD.txt
+│   ├── sample_resume.pdf
+│   └── 刘彭果简历.pdf
 ├── docs/
+│   ├── architecture_review.md  # 架构评审文档
+│   ├── code_review.md
+│   ├── demo.gif
 │   └── spec.md                 # 系统需求与设计规范
 ├── outputs/                    # 生成的 Markdown 简历与日志
-│   └── logs/
+│   ├── .gitkeep
+│   ├── logs/
+│   └── resume_20260801_015839.md
 ├── src/resume_copilot/
 │   ├── __init__.py
 │   ├── cli.py                  # Rich 交互式 CLI
@@ -191,6 +199,7 @@ Resume Copilot/
 │   └── utils/
 │       └── __init__.py
 ├── tests/                      # pytest 测试套件
+│   ├── __init__.py
 │   ├── test_analyzer.py
 │   ├── test_config.py
 │   ├── test_graph.py
@@ -282,7 +291,7 @@ result = graph.invoke(
 python -m pytest
 ```
 
-项目包含 43+ 个单元测试与端到端集成测试，覆盖：
+项目包含 51 个单元与集成测试全部通过 (51 passed in 4.06s)，覆盖：
 
 - 配置加载与日志输出 (`test_config.py`)
 - PDF 解析与异常处理 (`test_parser.py`)

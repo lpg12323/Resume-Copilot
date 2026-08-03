@@ -31,8 +31,8 @@ def test_settings_path_resolution() -> None:
     assert settings.data_dir.name == "data"
     assert settings.outputs_dir.name == "outputs"
     # Verify paths are under the project root, not its parent.
-    assert "ai-agent-day15" in settings.data_dir.parts
-    assert "ai-agent-day15" in settings.outputs_dir.parts
+    assert "Resume Copilot" in settings.data_dir.parts
+    assert "Resume Copilot" in settings.outputs_dir.parts
 
 
 def test_settings_log_level_validation() -> None:
